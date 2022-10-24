@@ -1,0 +1,90 @@
+/* format header */
+header {
+  background-color: rgb(255, 164, 44);
+  color: rgb(0, 0, 0);
+
+  text-align: center;
+
+  padding: 25px;
+  font-size: 30px;
+}
+
+/* body {
+  background-color: aquamarine;
+} */
+
+.card_div {
+  /* background-color: blue; */
+
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.card {
+  background-color: rgb(203, 240, 255);
+
+  margin: 10px;
+  border-radius: 10px;
+  width: 300px;
+  /* height: 250px; */
+}
+
+.card-header {
+  background-color: rgb(27, 167, 185);
+
+  /* text-align: center; */
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 14px;
+}
+
+.roleIcon {
+  width: 22px;
+}
+
+h2 {
+  font-size: 22px;
+  padding-bottom: 5px;
+}
+
+.card-roleSect, img, h3 {
+  display: inline;
+
+  width: 100%;
+  /* background-color: aqua; */
+
+  font-size: 20px;
+
+  padding: 0%;
+  margin: 0;
+}
+
+.card-info {
+  padding: 5px;
+  border: 1px rgba(0, 0, 0, 0.5) solid;
+  border-radius: 2px;
+  margin: 3px;
+  margin-bottom: 6px;
+}
+
+h4, p {
+  display: inline-block;
+}
+
+.card-body {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* Makes it so there's no underline under the hyperlink */
+a {
+    text-decoration: none;
+    color: rgb(9, 99, 151);
+}
