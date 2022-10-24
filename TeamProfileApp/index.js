@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 // FOR CREATING FILES
 const fs = require("fs");
 // FOR EMPLOYEE CONSTRUCTOR
-const buildEmployee = require("./src/employee");
+const buildEmployee = require("./lib/employee");
 
 
 

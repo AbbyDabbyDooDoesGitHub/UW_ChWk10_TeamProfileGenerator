@@ -48,9 +48,12 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 ```
 
-<!-- ## Resources Used 
+## Resources Used 
 
-Use this area to list referenced apis, etc -->
+### Icons
+- Manager Icon: [Briefcase by ainul muttaqin from the Noun Project](https://thenounproject.com/browse/icons/term/briefcase/)
+- Engineer Icon: [Engineer by Adrien Coquet from the Noun Project](https://thenounproject.com/browse/icons/term/engineer/)
+- Student Icon: [Student by Adrien Coquet from the Noun Project](https://thenounproject.com/browse/icons/term/student/)
 
 
 <!--
