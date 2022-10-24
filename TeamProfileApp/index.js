@@ -1,4 +1,4 @@
-// PACKAGES REQUIRED ----------------------------------------------
+// PACKAGES REQUIRED -------------------------------------------------------------
 // FOR IN TEMINAL QUESTIONS
 const inquirer = require("inquirer");
 // FOR CREATING FILES
@@ -8,27 +8,13 @@ const buildEmployee = require("./employee");
 
 
 
-// RUN ON LOAD ----------------------------------------------------
-var teamObjectArray = [];
+// RUN ON LOAD -------------------------------------------------------------------
+var employeeArray = [];
 var formattedTeam   = "";
 
 
-// QUESTION ARRAYS -------------------------------------
-// EMPLOYEE CONSTRUCTOR
-// function Employee(name, id, email) {
-//     this.name  = name;
-//     this.id    = id;
-//     this.email = email; }
-// MANAGER CONSTRUCTOR
-// function Manager(name, id, email, officeNumber) {
-//     this.officeNumber = officeNumber; }
-// ENGINEER CONSTRUCTOR
-// function Engineer(name, id, email, gitHub) {
-//     this.gitHub = gitHub; }
-// INTERN CONSTRUCTOR
-// function Intern(name, id, email, school) {
-//     this.school = school; }
-
+// QUESTION ARRAYS ---------------------------------------------------------------
+// STARTER QUESTIONS FOR TEAM MANAGER
 const managerQuestions = [
     {
         type: "input",
@@ -59,8 +45,7 @@ const managerQuestions = [
 
 ]
 
-
-// EMPLOYEE BASE ARRAY
+// EMPLOYEE QUESTIONS FOR ADDITIONAL TEAM MEMBERS
 const employeeQuestions = [
     {
         type: "list",
@@ -115,22 +100,21 @@ const employeeQuestions = [
 ]
 
 
-// RUN ON LOAD ----------------------------------------------------
+// RUN ON LOAD -------------------------------------------------------------------
 init();
 
-// QUESTION FUNCTIONS ---------------------------------------------
-// INITIALIZE APP, CONFIRM NEW README, TRIGGER Q's 
+// QUESTION FUNCTIONS ------------------------------------------------------------
+// INITIALIZE APP & TRIGGER Q's 
 function init() {
 
-    // ASK QUESTIONS
+    // ASK MANAGER QUESTION ARRAY
     inquirer.prompt(managerQuestions)
     .then((answers) => {
 
         console.log(answers);
 
-        formatEmployee(answers);
-        // INIT FUNCTION FOR WRITING FILE
-        // writeToFile("./app_output/README.md", reqAnswers, answers, optSections_yn);
+        // ADD TO EMPLOYEE OBJECT ARRAY
+        addToArray(answers);
 
     })
     .catch((error) => {
@@ -143,35 +127,7 @@ function init() {
 
 }
 
-// FORMAT THE RESPONSE 
-function formatEmployee(answers) {
-
-    const newEmployee = buildEmployee(answers);
-
-    // EMPLOYEE CONSTRUCTOR
-    // function Employee(name, id, email) {
-    //     this.name  = name;
-    //     this.id    = id;
-    //     this.email = email; }
-    // MANAGER CONSTRUCTOR
-    // function Manager(name, id, email, officeNumber) {
-    //     this.officeNumber = officeNumber; }
-    // ENGINEER CONSTRUCTOR
-    // function Engineer(name, id, email, gitHub) {
-    //     this.gitHub = gitHub; }
-    // INTERN CONSTRUCTOR
-    // function Intern(name, id, email, school) {
-    //     this.school = school; }
-
-    var prevFormattedTeam = formattedTeam;
-
-    formattedTeam = prevFormattedTeam + "----------------\nEmployee name is "+ answers.name + "\nEmployee ID is "+ answers.id + "\nEmployee email is "+ answers.email+"\n----------------\n\n\n";
-
-    askEmployeeQs(answers);
-
-}
-
-// TRIGGER EMPLOYEE Q's 
+// TRIGGER EMPLOYEE QUESTION ARRAY
 function askEmployeeQs(prevAnswers) {
 
     if (prevAnswers.confirmNew === true) {
@@ -182,7 +138,7 @@ function askEmployeeQs(prevAnswers) {
 
             console.log(answers);
 
-            formatEmployee(answers);
+            addToArray(answers);
 
         })
         .catch((error) => {
@@ -192,10 +148,54 @@ function askEmployeeQs(prevAnswers) {
                 console.log(error)
             }
         });
+
     } else {
+
         console.log("Ready to generate html");
-        console.log("Formatted team cards: \n\n"+ formattedTeam);
+        
+        formatEmployees();
+
     }
+
+}
+
+
+// ADDITIONAL FUNCTIONS FOR PARSING DATA -----------------------------------------
+// CREATE EMPLOYEE OBJECT
+function addToArray(answers) {
+
+    var newEmployee = buildEmployee(answers);
+
+    employeeArray.push(newEmployee);
+
+    askEmployeeQs(answers);
+
+}
+
+// FORMAT FINAL THINGS
+function formatEmployees() {
+
+    for (let i = 0; i < employeeArray.length; i++) {
+
+        var prevFormattedTeam = formattedTeam;
+
+        if (employeeArray[i].role === "Manager") {
+
+            formattedTeam = prevFormattedTeam + "----------------\nEmployee role is "+ employeeArray[i].role +"\nEmployee name is "+ employeeArray[i].name + "\nEmployee ID is "+ employeeArray[i].id + "\nEmployee email is "+ employeeArray[i].email+ "\nOffice number is "+ employeeArray[i].officeNumber+"\n----------------\n\n\n";
+
+        } else if (employeeArray[i].role === "Engineer") {
+
+            formattedTeam = prevFormattedTeam + "----------------\nEmployee role is "+ employeeArray[i].role +"\nEmployee name is "+ employeeArray[i].name + "\nEmployee ID is "+ employeeArray[i].id + "\nEmployee email is "+ employeeArray[i].email+ "\nGitHub is "+ employeeArray[i].gitHub+"\n----------------\n\n\n";
+
+        } else if (employeeArray[i].role === "Intern") {
+
+            formattedTeam = prevFormattedTeam + "----------------\nEmployee role is "+ employeeArray[i].role +"\nEmployee name is "+ employeeArray[i].name + "\nEmployee ID is "+ employeeArray[i].id + "\nEmployee email is "+ employeeArray[i].email+ "\nSchool is "+ employeeArray[i].school+"\n----------------\n\n\n";
+
+        }
+
+    };
+
+    console.log("Formatted team cards: \n\n"+ formattedTeam);
 
 }
 
@@ -205,14 +205,14 @@ function askEmployeeQs(prevAnswers) {
 // // GIVEN a command-line application that accepts user input
 // // WHEN I am prompted for my team members and their information
 // // WHEN I start the application
-// THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
-// THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-// WHEN I select the engineer option
-// THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-// WHEN I select the intern option
-// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-// WHEN I decide to finish building my team
+// // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
+// // WHEN I enter the team manager’s name, employee ID, email address, and office number
+// // THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
+// // WHEN I select the engineer option
+// // THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
+// // WHEN I select the intern option
+// // THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+// // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
 
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
