@@ -1,21 +1,30 @@
 # UW_ChWk10_TeamProfileGenerator
+
 ## Overview
+
+Build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person using the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4). Write a unit test for every part of your code and ensure that it passes each test using the [Jest testing package](https://jestjs.io/).
+
+The application will be invoked by using the following command:
+
 ```
-Build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. Write a unit test for every part of your code and ensure that it passes each test.
-
-Because this application won’t be deployed, you’ll need to provide a link to a walkthrough video that demonstrates its functionality and all of the tests passing. 
-
-> **Note**: There is no starter code for this assignment.
+bash
+node index.js
 ```
 
-### Link to Web App: 
-<!-- LINK TO DEPLOYMENT HERE -->
+The tests will be invoked by using the following command:
 
-### App Preview:
-<!-- Replace with path to screenshot   ![My Password Generator Screenshot](./Assets/MyPasswordGeneratorScreenShot.PNG "My Password Generator Screenshot") -->
+```
+bash
+npm test
+```
 
-## Notes
+Because this application won’t be deployed, you’ll also need to provide a link to a walkthrough video that demonstrates its functionality. 
 
+## Link to Video of App Demo: 
+
+[![Watch the Demo](https://img.youtube.com/vi/cYn3SDIv0MQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=cYn3SDIv0MQ)
+[You can also check out this example of an index.html file generated with the app.](/utils/exGenIndex.html)
+<!-- ## Notes -->
 <!-- Use this area to add personal notes on implementation, etc -->
 
 ## User Story
@@ -50,10 +59,21 @@ THEN I exit the application, and the HTML is generated
 
 ## Resources Used 
 
+### Technology
+- [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4)
+- [Jest testing package](https://jestjs.io/)
+- [jQuery Library](https://jquery.com/)
+
 ### Icons
 - Manager Icon: [Briefcase by ainul muttaqin from the Noun Project](https://thenounproject.com/browse/icons/term/briefcase/)
 - Engineer Icon: [Engineer by Adrien Coquet from the Noun Project](https://thenounproject.com/browse/icons/term/engineer/)
 - Student Icon: [Student by Adrien Coquet from the Noun Project](https://thenounproject.com/browse/icons/term/student/)
+
+### Helpful Resources
+- [Use Inquirer.js to Create a Conversational CLI User Interface by Janne Kemppainen](https://pakstech.com/blog/inquirer-js/)
+- [Inquirer.js: A collection of common interactive command line user interfaces](https://www.npmjs.com/package/inquirer/v/8.2.4#prompt)
+- [How to use Inquirer.js by Mat Wilmot](https://javascript.plainenglish.io/how-to-inquirer-js-c10a4e05ef1f)
+- [How to use the Inquirer Node package by Jon Deavers](https://www.educative.io/answers/how-to-use-the-inquirer-node-package)
 
 
 <!--
