@@ -7,7 +7,7 @@ const fs = require("fs");
 const buildEmployee = require("./lib/builder");
 
 
-// RUN ON LOAD -------------------------------------------------------------------
+// GLOBAL VARIABLES -------------------------------------------------------------------
 var employeeArray = [];
 var formattedTeam   = `
 <!DOCTYPE html>
